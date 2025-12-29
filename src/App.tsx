@@ -6,44 +6,47 @@ import Dashboard from './components/Dashboard';
 
 export default function App() {
   const [page, setPage] = useState('login');
-  const [email, setEmail] = useState('');
-  const [tempUser, setTempUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [email, setEmail] = useState(''); 
+  const [tempUser, setTempUser] = useState(null); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [currentUser, setCurrentUser] = useState(null); 
 
+ 
   useEffect(() => {
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       setCurrentUser(JSON.parse(savedUser));
       setIsLoggedIn(true);
     }
-  }, []);
+  }, []); 
+
 
   function goToSignup() {
     setPage('signup');
   }
 
   function goToLogin() {
-    setPage('login');
+    setPage('login'); 
   }
 
   function goToOTP(userData) {
-    setTempUser(userData);
-    setEmail(userData.email);
-    setPage('otp');
+    setTempUser(userData); 
+    setEmail(userData.email); 
+    setPage('otp'); 
   }
 
   function goToDashboard(user) {
-    setCurrentUser(user);
-    setIsLoggedIn(true);
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    setCurrentUser(user); 
+    setIsLoggedIn(true); 
+    localStorage.setItem('currentUser', JSON.stringify(user)); 
   }
 
   function logout() {
+
     setIsLoggedIn(false);
-    setCurrentUser(null);
+    setCurrentUser(null); 
     localStorage.removeItem('currentUser');
-    setPage('login');
+    setPage('login'); 
   }
 
   if (isLoggedIn) {
